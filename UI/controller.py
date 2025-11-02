@@ -36,9 +36,16 @@ class Controller:
             self._view.lista_auto.controls.append(ft.Text(str(auto)))
         self._view.update()
     def cerca_automobili(self, e):
-        modello=self._view.input_modello.value
-        automobili=self._model.cerca_automobili_per_modello(modello)
-        self._view.lista_auto_ricerca.controls.clear()
-        for auto in automobili:
-            self._view.lista_auto_ricerca.controls.append(ft.Text(str(auto)))
-        self._view.update()
+        try:
+            modello=self._view.input_modello_auto.value
+            automobili=self._model.cerca_automobili_per_modello(modello)
+            self._view.lista_auto_ricerca.controls.clear()
+            if automobili:
+                for auto in automobili:
+                    self._view.lista_auto_ricerca.controls.append(ft.Text(str(auto)))
+            else:
+                self._view.show_alert('Nessun auto trovata per modello')
+            self._view.update()
+        except Exception as e:
+            self._view.show_alert(e)
+

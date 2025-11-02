@@ -66,7 +66,6 @@ class View:
         # TODO
         self.mostra_button=ft.ElevatedButton('Mostra', on_click=self.controller.mostra_automobili)
         self.cerca_button=ft.ElevatedButton('Cerca' ,on_click=self.controller.cerca_automobili)
-        self.input_modello=ft.TextField(label="Modello")
         # --- LAYOUT ---
         self.page.add(
             self.toggle_cambia_tema,
